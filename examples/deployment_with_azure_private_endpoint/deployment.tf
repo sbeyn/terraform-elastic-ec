@@ -39,14 +39,12 @@ resource "azurerm_private_endpoint" "example" {
   }
 }
 
-data "external" "resource_guid" {
-  program = ["bash", "${path.module}/get_resource_guid.sh"]
+data "azapi_resource" "private_endpoint" {
+  name      = azurerm_private_endpoint.example.name
+  parent_id = azurerm_resource_group.example.id
+  type      = "Microsoft.Network/privateEndpoints@2023-04-01"
 
-  query = {
-    name                = azurerm_private_endpoint.example.name
-    resource_group_name = azurerm_resource_group.example.name
-    subscription        = data.azurerm_client_config.current.subscription_id
-  }
+  response_export_values = ["*"]
 }
 
 module "example" {
@@ -105,7 +103,7 @@ xpack.security.authc.providers:
       rules = [
         {
           azure_endpoint_name = azurerm_private_endpoint.example.name
-          azure_endpoint_guid = data.external.resource_guid.result["guid"]
+          azure_endpoint_guid = jsondecode(data.azapi_resource.private_endpoint.output).properties.resourceGuid
         }
       ]
     }

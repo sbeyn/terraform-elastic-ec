@@ -16,6 +16,7 @@ Example ESS deployment connecting to an Azure Virtual Network from an Azure priv
 | Name | Version |
 |------|---------|
 | hashicorp/azurerm | =3.90.0 |
+| Azure/azapi | >=1.3.0 |
 | elastic/ec | =0.9.0 |
 
 ## Environment variable
