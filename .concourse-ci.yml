@@ -103,7 +103,7 @@ jobs:
             ARM_SUBSCRIPTION_ID: ((.:creds.arm_subscription_id))
             ARM_CLIENT_ID: ((.:creds.arm_client_id))
             ARM_CLIENT_SECRET: ((.:creds.arm_client_secret))
-            EC_API_KEY: ((ess.ec_api_key))
+            EC_API_KEY: ((elastic_cloud.token))
           run:
             path: sh
             args:
@@ -113,7 +113,7 @@ jobs:
               tfenv use 1.2.5
               terraform --version
               go mod tidy -e
-              go test -v ./terratest/default_test.go -timeout 60m
+              go test -v ./terratest/deployment_with_azure_private_endpoint.go -timeout 60m
       - task: terratest-tf-1.7.2
         config:
           inputs:
@@ -135,7 +135,7 @@ jobs:
             ARM_SUBSCRIPTION_ID: ((.:creds.arm_subscription_id))
             ARM_CLIENT_ID: ((.:creds.arm_client_id))
             ARM_CLIENT_SECRET: ((.:creds.arm_client_secret))
-            EC_API_KEY: ((ess.ec_api_key))
+            EC_API_KEY: ((elastic_cloud.token))
           run:
             path: sh
             args:
@@ -145,7 +145,7 @@ jobs:
               tfenv use 1.7.2
               terraform --version
               go mod tidy -e
-              go test -v ./terratest/default_test.go -timeout 60m
+              go test -v ./terratest/deployment_with_azure_private_endpoint.go -timeout 60m
 
   - name: publish-and-release
     plan:
