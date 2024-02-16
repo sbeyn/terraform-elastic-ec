@@ -69,7 +69,7 @@ variable "elasticsearch" {
 variable "kibana" {
   type    = any
   default = {
-    zize = "1g"
+    size = "1g"
     zone_count = 1
   }
   description = "Kibana topology.  "
@@ -84,7 +84,7 @@ variable "enterprise_search" {
 variable "integrations_server" {
   type    = any
   default = {
-    zize = "1g"
+    size = "1g"
     zone_count = 1
   }
   description = "APM topology.  "
