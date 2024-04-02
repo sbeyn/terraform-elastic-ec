@@ -53,13 +53,13 @@ module "example" {
   name = "tftest${random_string.this.result}"
   region = "azure-westeurope"
 
-  observability = {}
+  obs_enabled = true
 
   elasticsearch = {
     autoscale = false
     hot = {
       size = "1g"
-      zone_count = 1
+      zone_count = 3
       autoscaling = {
         max_size = "64g"
         max_size_resource = "memory"

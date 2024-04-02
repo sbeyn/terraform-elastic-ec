@@ -51,6 +51,12 @@ variable "observability" {
   description = "Elasticsearch Service (ESS) observability of the deployment.  "
 }
 
+variable "obs_enabled" {
+  type    = bool
+  default = false
+  description = "Elasticsearch Service (ESS) disable observability of the deployment. "
+}
+
 variable "elasticsearch" {
   type    = any
   default = {
@@ -113,4 +119,6 @@ locals {
     for key, value in var.elasticsearch :
       key => merge({autoscaling={}}, value) if contains(["hot","warm","cold","frozen","master","coordinating","ml"], key)
   }
+
+  observability = var.obs_enabled ? var.observability : null
 }

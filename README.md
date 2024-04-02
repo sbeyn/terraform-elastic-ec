@@ -40,6 +40,7 @@ Provides an Elastic Cloud deployment resource, which allows deployments to be cr
 | enterprise_search | Enterprise Search topology and config | map | null | no |
 | traffic_filter_rulesets | Source ip from which the ruleset accepts traffic. | list | [] | no |
 | observability | Logs and metrics Ship to a deployment. | map | { deployment_id = "self" logs = true metrics = true } | no |
+| obs_enabled | Logs and metrics enable Ship to a deployment. | bool | false | no |
 | global_settings | Global settings object for the current deployment CAF. | map | {} | no |
 
 

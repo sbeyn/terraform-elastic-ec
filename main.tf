@@ -13,14 +13,8 @@ resource "ec_deployment" "this" {
   kibana                     = var.kibana
   integrations_server        = var.integrations_server
   enterprise_search          = var.enterprise_search
+  observability              = local.observability
   tags                       = var.tags
-
-  observability = {
-    deployment_id            = lookup(var.observability, "deployment_id", "self")
-    logs                     = lookup(var.observability, "logs", true) 
-    metrics                  = lookup(var.observability, "metrics", true) 
-    ref_id                   = lookup(var.observability, "ref_id", null)
-  }
 }
 
 resource "ec_deployment_traffic_filter" "rulesets" {
@@ -53,7 +47,7 @@ resource "ec_deployment_traffic_filter" "rulesets" {
     }
   }
 
-  depends_on = [ec_deployment.this]
+  depends_on                 = [ec_deployment.this]
 }
 
 resource "ec_deployment_traffic_filter_association" "attach" {
