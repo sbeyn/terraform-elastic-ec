@@ -1,4 +1,4 @@
-# module-elasticsearch-service-cluster
+# Terraform module-elasticsearch-service-cluster
 
 Provides an Elastic Cloud deployment resource, which allows deployments to be created, updated, and deleted with traffic filter rules are used to limit inbound traffic to deployment resources.
 
