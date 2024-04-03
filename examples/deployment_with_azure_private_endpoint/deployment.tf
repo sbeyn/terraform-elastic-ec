@@ -58,7 +58,7 @@ module "example" {
   elasticsearch = {
     autoscale = false
     hot = {
-      size = "1g"
+      size = "8g"
       zone_count = 3
       autoscaling = {
         max_size = "64g"
@@ -71,7 +71,7 @@ module "example" {
   }
 
   kibana = {
-    size = "1g"
+    size = "2g"
     zone_count = 1
     config = {
       user_settings_yaml = <<EOF
@@ -85,7 +85,10 @@ xpack.security.authc.providers:
     }
   }
 
-  enterprise_search = {}
+  enterprise_search = {
+    size = "2g"
+    zone_count = 2
+  }
   
   traffic_filter_rulesets = [
     {
