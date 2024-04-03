@@ -32,7 +32,7 @@ Provides an Elastic Cloud deployment resource, which allows deployments to be cr
 | prefix_name | Name of the deployment. | string | null | no |
 | alias | Name of the deployment. | string | null | no |
 | region | Elasticsearch Service (ESS) region where to create the deployment. | string | azure-westeurope | no | 
-| ec_version | Elastic Stack version to use for all the deployment resources. | string | latest | no |
+| stack_version | Elastic Stack version to use for all the deployment resources. | string | latest | no |
 | deployment_template_id | Deployment template identifier to create the deployment from. | string | azure-general-purpose | no | 
 | elasticsearch | Elasticsearch cluster topology and config | map | hot = { size = "1g" zone_count = 1 } | no |  
 | kibana | Kibana topology and config | map | { size = "1g" zone_count = 1 } | no | 
