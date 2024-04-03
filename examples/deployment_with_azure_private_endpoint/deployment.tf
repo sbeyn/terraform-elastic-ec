@@ -53,7 +53,7 @@ module "example" {
   name = "tftest${random_string.this.result}"
   region = "azure-westeurope"
 
-  stack_version = "8.12.1"
+  stack_version = "8.12.?"
 
   obs_enabled = true
 
